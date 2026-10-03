@@ -273,8 +273,11 @@ h3 {
 
 /* En escritorio, más aire entre el estado "Disponible…" y el nombre */
 @media (min-width: 821px) {
+  .
+   
   .hero-name {
     margin-top: 72px;
+    padding-left: 10px
   }
 }
 
