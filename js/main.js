@@ -52,7 +52,7 @@ function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) root.dataset.theme = savedTheme;
   } catch (error) {
-    // localStorage no disponible (modo privado, etc.): se usa el tema del sistema
+    // localStorage no disponible (modo privado, etc.): se usa el tema del sistema.
   }
 
   themeButton.addEventListener('click', () => {
