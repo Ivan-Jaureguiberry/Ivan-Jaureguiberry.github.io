@@ -30,7 +30,6 @@
   --accent: #1f4fd8;
   --accent-soft: #e3eafc;
   --sky: #6cb4ee;
-  --inspect-bg: rgba(108, 180, 238, 0.18);
   --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Instrument Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
@@ -53,8 +52,7 @@
     --accent: #7ea2ff;
     --accent-soft: #1a2547;
     --sky: #6cb4ee;
-    --inspect-bg: rgba(108, 180, 238, 0.14);
-    color-scheme: dark;
+      color-scheme: dark;
   }
 }
 
@@ -67,7 +65,6 @@
   --accent: #7ea2ff;
   --accent-soft: #1a2547;
   --sky: #6cb4ee;
-  --inspect-bg: rgba(108, 180, 238, 0.14);
   color-scheme: dark;
 }
 
@@ -267,7 +264,7 @@ h3 {
   box-shadow: 0 0 0 3px color-mix(in srgb, #22a55a 25%, transparent);
 }
 
-.inspect {
+.hero-name {
   position: relative;
   display: inline-block;
   margin-top: 28px;
@@ -276,13 +273,12 @@ h3 {
 
 /* En escritorio, más aire entre el estado "Disponible…" y el nombre */
 @media (min-width: 821px) {
-  .inspect {
-    /* margin-top: 72px; */
-    padding-left: 10px;
+  .hero-name {
+    margin-top: 72px;
   }
 }
 
-.inspect h1 {
+.hero-name h1 {
   font-size: clamp(2.6rem, 9vw, 6.4rem);
   font-weight: 800;
   letter-spacing: -0.035em;
@@ -291,62 +287,12 @@ h3 {
   z-index: 1;
 }
 
-.inspect h1 .ln {
+.hero-name h1 .ln {
   display: block;
 }
 
-.inspect h1 .ln2 {
+.hero-name h1 .ln2 {
   color: var(--accent);
-}
-
-.inspect::before {
-  content: '';
-  position: absolute;
-  inset: -6px -10px;
-  background: var(--inspect-bg);
-  outline: 1px dashed var(--sky);
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.tip {
-  position: absolute;
-  left: -10px;
-  top: -38px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  background: var(--ink);
-  color: var(--bg);
-  padding: 4px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(4px);
-  transition:
-    opacity 0.25s,
-    transform 0.25s;
-}
-
-.tip b {
-  color: var(--sky);
-  font-weight: 500;
-}
-
-.tip i {
-  font-style: normal;
-  opacity: 0.7;
-}
-
-.inspect:hover::before,
-.inspect.on::before {
-  opacity: 1;
-}
-
-.inspect:hover .tip,
-.inspect.on .tip {
-  opacity: 1;
-  transform: none;
 }
 
 .lead {
