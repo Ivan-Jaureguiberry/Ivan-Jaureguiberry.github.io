@@ -5,11 +5,10 @@
    1. Utilidades
    2. Tema claro / oscuro
    3. Menú móvil
-   4. Inspector del nombre (hero)
-   5. Reloj de Buenos Aires y año del footer
-   6. Mini carrito de FitTrade
-   7. Copiar email
-   8. Formulario de contacto
+   4. Reloj de Buenos Aires y año del footer
+   5. Mini carrito de FitTrade
+   6. Copiar email
+   7. Formulario de contacto
    ========================================================================== */
 
 'use strict';
@@ -95,38 +94,7 @@ function initMobileMenu() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Inspector del nombre (hero)
-   Simula el resaltado de las DevTools mostrando las medidas reales del <h1>.
-   -------------------------------------------------------------------------- */
-
-function initNameInspector() {
-  const inspector = $('#inspect');
-  const heading = inspector.querySelector('h1');
-  const dimensions = $('#dims');
-
-  const updateDimensions = () => {
-    const { width, height } = heading.getBoundingClientRect();
-    dimensions.textContent = `${Math.round(width)} × ${Math.round(height)}`;
-  };
-
-  updateDimensions();
-  window.addEventListener('resize', updateDimensions);
-
-  if (document.fonts) {
-    document.fonts.ready.then(updateDimensions);
-  }
-
-  // Muestra el efecto una vez al cargar, salvo que el usuario prefiera menos movimiento
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!prefersReducedMotion) {
-    setTimeout(() => inspector.classList.add('on'), 600);
-    setTimeout(() => inspector.classList.remove('on'), 3200);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   5. Reloj de Buenos Aires y año del footer
+   4. Reloj de Buenos Aires y año del footer
    -------------------------------------------------------------------------- */
 
 function initClock() {
@@ -150,7 +118,7 @@ function initFooterYear() {
 }
 
 /* --------------------------------------------------------------------------
-   6. Mini carrito de FitTrade
+   5. Mini carrito de FitTrade
    Cada producto descuenta stock al agregarse; sin stock, se deshabilita.
    -------------------------------------------------------------------------- */
 
@@ -192,7 +160,7 @@ function initMiniCart() {
 }
 
 /* --------------------------------------------------------------------------
-   7. Copiar email
+   6. Copiar email
    -------------------------------------------------------------------------- */
 
 function initCopyEmail() {
@@ -225,7 +193,7 @@ function initCopyEmail() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Formulario de contacto
+   7. Formulario de contacto
    Valida los campos y abre la app de correo con el mensaje armado.
    -------------------------------------------------------------------------- */
 
@@ -290,7 +258,6 @@ function initContactForm() {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initMobileMenu();
-  initNameInspector();
   initClock();
   initFooterYear();
   initMiniCart();
