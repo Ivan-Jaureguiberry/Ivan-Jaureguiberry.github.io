@@ -266,18 +266,19 @@ h3 {
 
 .hero-name {
   position: relative;
-  display: inline-block;
-  margin-top: 28px;
+  width: fit-content;
   max-width: 100%;
 }
 
-/* En escritorio, más aire entre el estado "Disponible…" y el nombre */
+/* El estado "Disponible…" va debajo del nombre */
+.hero-name + .status {
+  margin-top: 28px;
+}
+
+/* En escritorio, más aire entre el nombre y el estado */
 @media (min-width: 821px) {
-  .
-   
-  .hero-name {
-    margin-top: 72px;
-    padding-left: 20px
+  .hero-name + .status {
+    margin-top: 48px;
   }
 }
 
