@@ -5,10 +5,10 @@
    1. Utilidades
    2. Tema claro / oscuro
    3. Menú móvil
-   4. Reloj de Buenos Aires y año del footer
-   5. Mini carrito de FitTrade
-   6. Copiar email
-   7. Formulario de contacto
+   4. Año del footer
+   5. Copiar email
+   6. Formulario de contacto
+   7. Versiones de prueba
    ========================================================================== */
 
 'use strict';
@@ -94,73 +94,15 @@ function initMobileMenu() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Reloj de Buenos Aires y año del footer
+   4. Año del footer
    -------------------------------------------------------------------------- */
-
-function initClock() {
-  const clock = $('#clock');
-  const formatter = new Intl.DateTimeFormat('es-AR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'America/Argentina/Buenos_Aires',
-  });
-
-  const updateClock = () => {
-    clock.textContent = formatter.format(new Date());
-  };
-
-  updateClock();
-  setInterval(updateClock, 30_000);
-}
 
 function initFooterYear() {
   $('#year').textContent = new Date().getFullYear();
 }
 
 /* --------------------------------------------------------------------------
-   5. Mini carrito de FitTrade
-   Cada producto descuenta stock al agregarse; sin stock, se deshabilita.
-   -------------------------------------------------------------------------- */
-
-function initMiniCart() {
-  const cartBadge = $('#cart');
-  let itemsInCart = 0;
-
-  const bumpCartBadge = () => {
-    cartBadge.classList.add('bump');
-    setTimeout(() => cartBadge.classList.remove('bump'), 200);
-  };
-
-  $$('.prod').forEach((product) => {
-    const addButton = product.querySelector('button');
-    const stockLabel = product.querySelector('.s');
-
-    addButton.addEventListener('click', () => {
-      let stock = Number(stockLabel.dataset.s);
-
-      if (stock <= 0) {
-        showToast('Sin stock disponible');
-        return;
-      }
-
-      stock -= 1;
-      itemsInCart += 1;
-
-      stockLabel.dataset.s = stock;
-      stockLabel.textContent = stock;
-      cartBadge.textContent = `Carrito ${itemsInCart}`;
-      bumpCartBadge();
-
-      if (stock === 0) {
-        addButton.textContent = 'Sin stock';
-        addButton.disabled = true;
-      }
-    });
-  });
-}
-
-/* --------------------------------------------------------------------------
-   6. Copiar email
+   5. Copiar email
    -------------------------------------------------------------------------- */
 
 function initCopyEmail() {
@@ -193,7 +135,7 @@ function initCopyEmail() {
 }
 
 /* --------------------------------------------------------------------------
-   7. Formulario de contacto
+   6. Formulario de contacto
    Valida los campos y abre la app de correo con el mensaje armado.
    -------------------------------------------------------------------------- */
 
@@ -252,15 +194,87 @@ function initContactForm() {
 }
 
 /* --------------------------------------------------------------------------
+   7. Versiones de prueba
+   "Probalo acá" abre el sitio dentro de una ventana, o la terminal del
+   inventario (la lógica del programa está en demo-inventario.js).
+   -------------------------------------------------------------------------- */
+
+function initDemos() {
+  const webDialog = $('#demoWeb');
+  const webFrame = $('#demoWebFrame');
+  const webTitle = $('#demoWebTitle');
+  const webOpen = $('#demoWebOpen');
+  const stage = webDialog.querySelector('.demo-stage');
+  const deviceButtons = webDialog.querySelectorAll('[data-device]');
+
+  const invDialog = $('#demoInventario');
+  let inventarioIniciado = false;
+
+  InventarioDemo.iniciar({
+    salida: $('#consoleOutput'),
+    form: $('#consoleForm'),
+    entrada: $('#consoleEntry'),
+  });
+
+  const setDevice = (device) => {
+    stage.dataset.device = device;
+    deviceButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.device === device));
+    });
+  };
+
+  const openWebDemo = (title, url) => {
+    webTitle.textContent = title;
+    webOpen.href = url;
+    webFrame.title = `Versión de prueba de ${title}`;
+    if (webFrame.src !== url) webFrame.src = url;
+    setDevice('desktop');
+    webDialog.showModal();
+  };
+
+  const openInventario = () => {
+    invDialog.showModal();
+    if (!inventarioIniciado) {
+      InventarioDemo.reiniciar();
+      inventarioIniciado = true;
+    }
+    $('#consoleEntry').focus();
+  };
+
+  $$('[data-demo]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (button.dataset.demo === 'web') openWebDemo(button.dataset.title, button.dataset.url);
+      else openInventario();
+    });
+  });
+
+  deviceButtons.forEach((button) => {
+    button.addEventListener('click', () => setDevice(button.dataset.device));
+  });
+
+  $('#demoInvReset').addEventListener('click', () => {
+    InventarioDemo.reiniciar();
+    $('#consoleEntry').focus();
+  });
+
+  // Cerrar con la X o haciendo clic afuera de la ventana
+  [webDialog, invDialog].forEach((dialog) => {
+    dialog.querySelector('.demo-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
    Inicio
    -------------------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initMobileMenu();
-  initClock();
   initFooterYear();
-  initMiniCart();
   initCopyEmail();
   initContactForm();
+  initDemos();
 });
