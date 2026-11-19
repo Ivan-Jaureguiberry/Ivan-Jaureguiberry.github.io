@@ -20,8 +20,9 @@
 
 /* ==========================================================================
    1. Variables (colores, tipografías, medidas)
-   Layout: una sola columna angosta, como una carta; los proyectos alternan
-   la captura a izquierda y derecha.
+   Layout: pensado primero para 1920×1080 (contenedor de 1360px, hero en dos
+   columnas con la vista previa del último proyecto) y adaptado hacia abajo:
+   laptop, tablet y celular. Los proyectos alternan la captura de lado.
    ========================================================================== */
 
 :root {
@@ -40,7 +41,8 @@
   --font-hand: 'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
-  --wrap: 880px;
+  --wrap: 1360px;
+  --header-h: 64px;
   --radius: 12px;
 }
 
@@ -95,7 +97,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
+  font-size: clamp(1rem, 0.85rem + 0.3vw, 1.1875rem);
   line-height: 1.65;
 }
 
@@ -173,7 +175,7 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 64px;
+  height: var(--header-h);
 }
 
 .brand {
@@ -259,7 +261,7 @@ img {
 
   .nav {
     position: absolute;
-    top: 64px;
+    top: var(--header-h);
     left: 0;
     right: 0;
     flex-direction: column;
@@ -284,7 +286,52 @@ img {
    ========================================================================== */
 
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 48px 72px;
   padding-block: clamp(48px, 9vw, 104px) clamp(48px, 7vw, 80px);
+}
+
+/* En pantallas grandes el hero ocupa la primera pantalla, con la vista
+   previa del último proyecto a la derecha */
+@media (min-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    min-height: min(calc(100svh - var(--header-h)), 960px);
+    padding-block: 48px 64px;
+  }
+}
+
+.hero-preview {
+  display: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-preview .browser {
+  display: block;
+}
+
+.hero-preview .browser-bar {
+  display: flex;
+}
+
+.hero-preview .note {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (min-width: 1100px) {
+  .hero-preview {
+    display: block;
+  }
+
+  /* El apellido tiene que entrar en su columna sin tocar la vista previa */
+  .hero-name {
+    font-size: clamp(4rem, 5vw, 6rem);
+  }
 }
 
 .hello {
@@ -297,7 +344,7 @@ img {
 
 .hero-name {
   margin-top: 4px;
-  font-size: clamp(2.7rem, 9vw, 5.6rem);
+  font-size: clamp(2.7rem, 10vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.98;
@@ -335,7 +382,7 @@ img {
   max-width: 58ch;
   margin-top: 28px;
   color: var(--muted);
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.45rem);
 }
 
 .cta {
@@ -413,7 +460,7 @@ img {
 }
 
 .block h2 {
-  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  font-size: clamp(1.9rem, 1.2rem + 2vw, 3.25rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -470,7 +517,23 @@ img {
   font-size: 0.98rem;
 }
 
-@media (max-width: 720px) {
+.about-text {
+  max-width: 62ch;
+}
+
+/* 1920: título, texto y herramientas en tres columnas */
+@media (min-width: 1100px) {
+  .about {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .about h2 {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 900px) {
   .about {
     grid-template-columns: 1fr;
   }
@@ -488,16 +551,24 @@ img {
 
 .project {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(24px, 5vw, 48px);
+  gap: clamp(24px, 4vw, 80px);
+}
+
+.project-info {
+  max-width: 56ch;
 }
 
 .project > * {
   min-width: 0;
 }
 
-/* Proyectos alternados: la captura cambia de lado */
+/* Proyectos alternados: la captura cambia de lado y mantiene su tamaño */
+.project:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+}
+
 .project:nth-child(even) .shot {
   order: 2;
 }
@@ -626,8 +697,9 @@ img {
   content: ' →';
 }
 
-@media (max-width: 760px) {
-  .project {
+@media (max-width: 900px) {
+  .project,
+  .project:nth-child(even) {
     grid-template-columns: 1fr;
   }
 
@@ -639,6 +711,19 @@ img {
 /* ==========================================================================
    11. Formación
    ========================================================================== */
+
+@media (min-width: 1100px) {
+  #formacion .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.6fr);
+    gap: 0 72px;
+    align-items: start;
+  }
+
+  #formacion .timeline {
+    margin-top: 8px;
+  }
+}
 
 .timeline {
   display: grid;
@@ -803,7 +888,14 @@ textarea {
   color: var(--accent);
 }
 
-@media (max-width: 760px) {
+@media (min-width: 1100px) {
+  .contact {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 96px;
+  }
+}
+
+@media (max-width: 900px) {
   .contact {
     grid-template-columns: 1fr;
   }
