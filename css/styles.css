@@ -20,9 +20,9 @@
 
 /* ==========================================================================
    1. Variables (colores, tipografías, medidas)
-   Layout: pensado primero para 1920×1080 (contenedor de 1360px, hero en dos
-   columnas con la vista previa del último proyecto) y adaptado hacia abajo:
-   laptop, tablet y celular. Los proyectos alternan la captura de lado.
+   Layout: una sola columna que se lee de arriba hacia abajo en todas las
+   pantallas. En 1920×1080 el contenedor llega a 1120px y el texto se agranda;
+   en notebook, tablet y celular solo se achica.
    ========================================================================== */
 
 :root {
@@ -41,7 +41,7 @@
   --font-hand: 'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
-  --wrap: 1360px;
+  --wrap: 1120px;
   --header-h: 64px;
   --radius: 12px;
 }
@@ -286,52 +286,7 @@ img {
    ========================================================================== */
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: center;
-  gap: 48px 72px;
-  padding-block: clamp(48px, 9vw, 104px) clamp(48px, 7vw, 80px);
-}
-
-/* En pantallas grandes el hero ocupa la primera pantalla, con la vista
-   previa del último proyecto a la derecha */
-@media (min-width: 1100px) {
-  .hero {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    min-height: min(calc(100svh - var(--header-h)), 960px);
-    padding-block: 48px 64px;
-  }
-}
-
-.hero-preview {
-  display: none;
-  color: inherit;
-  text-decoration: none;
-}
-
-.hero-preview .browser {
-  display: block;
-}
-
-.hero-preview .browser-bar {
-  display: flex;
-}
-
-.hero-preview .note {
-  display: block;
-  margin-top: 16px;
-  text-align: center;
-}
-
-@media (min-width: 1100px) {
-  .hero-preview {
-    display: block;
-  }
-
-  /* El apellido tiene que entrar en su columna sin tocar la vista previa */
-  .hero-name {
-    font-size: clamp(4rem, 5vw, 6rem);
-  }
+  padding-block: clamp(48px, 9vw, 120px) clamp(48px, 7vw, 96px);
 }
 
 .hello {
@@ -344,7 +299,7 @@ img {
 
 .hero-name {
   margin-top: 4px;
-  font-size: clamp(2.7rem, 10vw, 5.5rem);
+  font-size: clamp(2.7rem, 9vw, 7rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.98;
@@ -476,16 +431,11 @@ img {
 
 .about {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px clamp(28px, 5vw, 56px);
+  gap: 28px;
 }
 
 .about > * {
   min-width: 0;
-}
-
-.about h2 {
-  grid-column: 1 / -1;
 }
 
 .about-text {
@@ -494,7 +444,8 @@ img {
 }
 
 .skills {
-  align-self: start;
+  justify-self: start;
+  width: min(100%, 560px);
   padding: 22px 24px;
   border-radius: var(--radius);
   background: var(--surface);
@@ -518,25 +469,7 @@ img {
 }
 
 .about-text {
-  max-width: 62ch;
-}
-
-/* 1920: título, texto y herramientas en tres columnas */
-@media (min-width: 1100px) {
-  .about {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .about h2 {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: 900px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
+  max-width: 68ch;
 }
 
 /* ==========================================================================
@@ -551,26 +484,15 @@ img {
 
 .project {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 80px);
+  gap: 28px;
 }
 
 .project-info {
-  max-width: 56ch;
+  max-width: 68ch;
 }
 
 .project > * {
   min-width: 0;
-}
-
-/* Proyectos alternados: la captura cambia de lado y mantiene su tamaño */
-.project:nth-child(even) {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
-}
-
-.project:nth-child(even) .shot {
-  order: 2;
 }
 
 .shot {
@@ -697,33 +619,9 @@ img {
   content: ' →';
 }
 
-@media (max-width: 900px) {
-  .project,
-  .project:nth-child(even) {
-    grid-template-columns: 1fr;
-  }
-
-  .project:nth-child(even) .shot {
-    order: 0;
-  }
-}
-
 /* ==========================================================================
    11. Formación
    ========================================================================== */
-
-@media (min-width: 1100px) {
-  #formacion .wrap {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.6fr);
-    gap: 0 72px;
-    align-items: start;
-  }
-
-  #formacion .timeline {
-    margin-top: 8px;
-  }
-}
 
 .timeline {
   display: grid;
@@ -734,11 +632,11 @@ img {
   border-left: 2px dashed var(--line);
 }
 
+/* Cada estudio: la fecha arriba y el título debajo */
 .timeline li {
   position: relative;
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 16px;
+  gap: 2px;
 }
 
 .timeline li::before {
@@ -770,21 +668,13 @@ img {
   font-size: 0.98rem;
 }
 
-@media (max-width: 480px) {
-  .timeline li {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-}
-
 /* ==========================================================================
    12. Contacto y formulario
    ========================================================================== */
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: clamp(28px, 5vw, 56px);
+  gap: 36px;
 }
 
 .contact > * {
@@ -834,6 +724,7 @@ img {
 }
 
 .contact form {
+  width: min(100%, 640px);
   display: grid;
   gap: 14px;
   padding: clamp(20px, 3vw, 28px);
@@ -886,19 +777,6 @@ textarea {
 
 .form-note.ok {
   color: var(--accent);
-}
-
-@media (min-width: 1100px) {
-  .contact {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 96px;
-  }
-}
-
-@media (max-width: 900px) {
-  .contact {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ==========================================================================
