@@ -14,40 +14,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=Caveat:wght@500;700&display=swap"
     />
 
     <!-- Estilos (cambiá el ?v= en cada actualización para que el navegador no use una copia vieja) -->
-    <link rel="stylesheet" href="css/styles.css?v=3" />
+    <link rel="stylesheet" href="css/styles.css?v=5" />
   </head>
+
   <body>
     <!-- ============ HEADER ============ -->
     <header class="top">
-      <div class="wrap">
-        <a class="logo" href="#inicio">&lt;ivan<span>.dev</span> /&gt;</a>
+      <div class="wrap top-inner">
+        <a class="brand" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">IJ</span>
+          Iván Jaureguiberry
+        </a>
+
         <div class="top-actions">
           <nav class="nav" id="nav" data-open="false" aria-label="Secciones">
+            <a href="#sobre-mi">Sobre mí</a>
             <a href="#proyectos">Proyectos</a>
-            <a href="#habilidades">Habilidades</a>
             <a href="#formacion">Formación</a>
             <a href="#contacto">Contacto</a>
           </nav>
-          <button
-            class="icon-btn"
-            id="themeBtn"
-            type="button"
-            aria-label="Cambiar tema claro/oscuro"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
+
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="Cambiar tema claro/oscuro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
             </svg>
           </button>
+
           <button
             class="icon-btn menu-btn"
             id="menuBtn"
@@ -56,13 +52,7 @@
             aria-expanded="false"
             aria-controls="nav"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
@@ -73,283 +63,271 @@
     <main id="inicio">
       <!-- ============ HERO ============ -->
       <section class="hero wrap">
-        <div class="hero-name">
-          <h1>
-            <span class="ln">Iván</span>
-            <span class="ln ln2">Jaureguiberry</span>
-          </h1>
-        </div>
+        <p class="hello">Hola, soy</p>
+
+        <h1 class="hero-name">
+          Iván
+          <span class="surname">Jaureguiberry</span>
+        </h1>
+
         <span class="status">
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           Disponible para mi primer rol como Front-End
         </span>
+
         <p class="lead">
-          Desarrollador
-          <strong>Front-End</strong>
-          y estudiante de
-          <strong>Ingeniería Informática</strong>
-          en la UNLaM. Construyo interfaces responsive con HTML, CSS, JavaScript y React, y me
-          interesa que el código sea tan prolijo como lo que se ve en pantalla.
+          Estudio Ingeniería Informática en la UNLaM y me dedico a lo que más me gusta: armar páginas
+          web que se vean bien y se usen fácil, tanto en la compu como en el
+          celular.
         </p>
+
         <div class="cta">
-          <a class="btn primary" href="#proyectos">
-            Ver proyectos
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
-          </a>
-          <a
-            class="btn"
-            href="https://github.com/Ivan-Jaureguiberry"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"
-              />
-            </svg>
+          <a class="btn primary" href="#proyectos">Ver mis proyectos</a>
+          <a class="btn" href="https://github.com/Ivan-Jaureguiberry" target="_blank" rel="noopener">
             GitHub
           </a>
-          <a
-            class="btn"
-            href="https://www.linkedin.com/in/ivan-jaureguiberry"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
-              />
-            </svg>
+          <a class="btn" href="https://www.linkedin.com/in/ivan-jaureguiberry" target="_blank" rel="noopener">
             LinkedIn
           </a>
         </div>
-        <div class="meta">
-          <span>El Palomar, Buenos Aires</span>
-          <span>
-            UTC−3 ·
-            <span id="clock">--:--</span>
-          </span>
-          <span>Inglés: intermedio</span>
+
+        <p class="where">El Palomar, Buenos Aires · Inglés intermedio</p>
+      </section>
+
+      <!-- ============ SOBRE MÍ ============ -->
+      <section class="block" id="sobre-mi">
+        <div class="wrap about">
+          <h2>Sobre mí</h2>
+
+          <div class="about-text">
+            <p>
+              Empecé a programar en la facultad con C y Python, pero me enganché de verdad cuando vi
+              que lo que escribía se convertía en algo que cualquiera podía abrir en el navegador.
+              Desde ahí me fui por el lado del Front-End.
+            </p>
+            <p>
+              Me gusta cuidar los detalles: que los botones respondan, que el texto se lea bien y que
+              la página no se rompa en una pantalla chica. Hoy trabajo con HTML, CSS, JavaScript y
+              React, y uso Git y GitHub en todos mis proyectos.
+            </p>
+            <p>
+              Estoy buscando mi primera experiencia en un equipo donde pueda aprender, aportar y
+              seguir creciendo.
+            </p>
+          </div>
+
+          <aside class="skills" aria-label="Herramientas que uso">
+            <h3>Lo que uso</h3>
+            <ul>
+              <li><strong>Front-End:</strong> HTML, CSS, JavaScript, React</li>
+              <li><strong>Herramientas:</strong> Git, GitHub, APIs REST, Netlify</li>
+              <li><strong>También:</strong> SQL, SQLite, Python, C</li>
+            </ul>
+          </aside>
         </div>
       </section>
 
       <!-- ============ PROYECTOS ============ -->
       <section class="block" id="proyectos">
         <div class="wrap">
-          <div class="sec-head">
-            <h2>Proyectos</h2>
-            <span class="tag">2 repositorios públicos</span>
-          </div>
+          <h2>Proyectos</h2>
+          <p class="section-intro">Lo que fui construyendo, del más nuevo al primero.</p>
+
           <div class="projects">
-            <!-- Proyecto 1: FitTrade -->
+            <!-- Proyecto 1: Lomas Sweet (el más reciente) -->
             <article class="project">
-              <div>
-                <span class="tag">E-commerce · Front-End</span>
-                <h3 class="project-title">FitTrade</h3>
+              <figure class="shot">
+                <div class="browser">
+                  <div class="browser-bar">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <span>ivan-jaureguiberry.github.io/Proyecto-React-LomasSweet</span>
+                  </div>
+                  <img
+                    src="img/lomas-sweet.webp"
+                    width="960"
+                    height="567"
+                    loading="lazy"
+                    alt="Página de inicio de Lomas Sweet: título Cortalo al medio, el relleno habla solo, junto a un alfajor cortado"
+                  />
+                </div>
+                <figcaption class="note">mi proyecto más nuevo</figcaption>
+              </figure>
+
+              <div class="project-info">
+                <p class="kind">E-commerce · React</p>
+                <h3>Lomas Sweet</h3>
                 <p>
-                  Tienda online de equipamiento para Pilates y entrenamiento funcional. Catálogo de
-                  productos, carrito de compras con control de stock, novedades, reseñas de clientes
-                  y formulario de contacto, todo responsive.
+                  Tienda online de alfajores artesanales de Lomas de Zamora. Tiene catálogo con
+                  búsqueda y paginación, detalle de cada producto, favoritos y carrito. Los usuarios
+                  pueden registrarse e iniciar sesión, y hay un panel de administración protegido para
+                  cargar, editar y borrar productos.
                 </p>
-                <ul class="feat">
-                  <li>Carrito funcional en JS</li>
-                  <li>Control de stock</li>
-                  <li>Layout con Grid y Flexbox</li>
-                  <li>Media queries por dispositivo</li>
-                </ul>
-                <div class="stack">
-                  <span class="chip">HTML5</span>
-                  <span class="chip">CSS3</span>
-                  <span class="chip">JavaScript</span>
-                  <span class="chip">Netlify</span>
-                </div>
+                <p class="stack">React · Vite · React Router · Firebase (Auth y Firestore) · CSS Modules</p>
                 <div class="links">
-                  <a
-                    class="btn primary"
-                    href="https://fittrade-projectofrontend.netlify.app/"
-                    target="_blank"
-                    rel="noopener"
+                  <button
+                    class="btn primary btn-small"
+                    type="button"
+                    data-demo="web"
+                    data-title="Lomas Sweet"
+                    data-url="https://ivan-jaureguiberry.github.io/Proyecto-React-LomasSweet/"
                   >
-                    Ver sitio en vivo ↗
+                    Probalo acá
+                  </button>
+                  <a href="https://ivan-jaureguiberry.github.io/Proyecto-React-LomasSweet/" target="_blank" rel="noopener">
+                    Ver sitio
                   </a>
-                  <a
-                    class="btn"
-                    href="https://github.com/Ivan-Jaureguiberry/Proyecto-FrontEnd"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Código
+                  <a href="https://github.com/Ivan-Jaureguiberry/Proyecto-React-LomasSweet" target="_blank" rel="noopener">
+                    Ver código
                   </a>
-                </div>
-              </div>
-              <!-- Vista previa interactiva -->
-              <div class="mock" aria-label="Vista previa interactiva de FitTrade">
-                <div class="mock-bar">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <span>fittrade-projectofrontend.netlify.app</span>
-                </div>
-                <div class="shop">
-                  <div class="shop-nav">
-                    FIT TRADE
-                    <span class="cart" id="cart">Carrito 0</span>
-                  </div>
-                  <div class="shop-grid">
-                    <div class="prod">
-                      <div class="img"></div>
-                      <b>Tabla de Pilates Negra</b>
-                      <span>
-                        stock
-                        <em class="s" data-s="3">3</em>
-                      </span>
-                      <button type="button">Agregar</button>
-                    </div>
-                    <div class="prod">
-                      <div class="img"></div>
-                      <b>Tabla de Pilates Celeste</b>
-                      <span>
-                        stock
-                        <em class="s" data-s="5">5</em>
-                      </span>
-                      <button type="button">Agregar</button>
-                    </div>
-                    <div class="prod">
-                      <div class="img"></div>
-                      <b>Tabla de Pilates Rosa</b>
-                      <span>
-                        stock
-                        <em class="s" data-s="2">2</em>
-                      </span>
-                      <button type="button">Agregar</button>
-                    </div>
-                  </div>
-                  <p class="shop-hint">Probá el carrito: el stock se descuenta</p>
                 </div>
               </div>
             </article>
 
-            <!-- Proyecto 2: Inventario verdulería -->
+            <!-- Proyecto 2: FitTrade -->
             <article class="project">
-              <div>
-                <span class="tag">Aplicación de consola · Backend</span>
-                <h3 class="project-title">Gestión de inventario para verdulería</h3>
-                <p>
-                  Sistema para administrar el stock de un comercio: alta, modificación, baja y
-                  búsqueda de productos, registro de ventas que descuenta stock y reportes de
-                  productos con stock bajo. Interfaz de consola con colores usando Colorama.
-                </p>
-                <ul class="feat">
-                  <li>CRUD completo de productos</li>
-                  <li>Búsqueda por ID, nombre o categoría</li>
-                  <li>Ventas con validación de stock</li>
-                  <li>Alertas de stock bajo</li>
-                </ul>
-                <div class="stack">
-                  <span class="chip">Python</span>
-                  <span class="chip">SQLite</span>
-                  <span class="chip">SQL</span>
-                  <span class="chip">Colorama</span>
+              <figure class="shot">
+                <div class="browser">
+                  <div class="browser-bar">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <span>fittrade-projectofrontend.netlify.app</span>
+                  </div>
+                  <img
+                    src="img/fittrade.webp"
+                    width="960"
+                    height="567"
+                    loading="lazy"
+                    alt="Página de inicio de FitTrade: logo rosa, menú y novedades con tablas de Pilates"
+                  />
                 </div>
+                <figcaption class="note">así se ve publicada</figcaption>
+              </figure>
+
+              <div class="project-info">
+                <p class="kind">E-commerce · Front-End</p>
+                <h3>FitTrade</h3>
+                <p>
+                  Una tienda online de equipamiento de Pilates. Tiene catálogo de productos, carrito
+                  de compras que controla el stock, reseñas de clientes y formulario de contacto. La
+                  armé responsive con Grid, Flexbox y media queries.
+                </p>
+                <p class="stack">HTML · CSS · JavaScript · Netlify</p>
                 <div class="links">
+                  <button
+                    class="btn primary btn-small"
+                    type="button"
+                    data-demo="web"
+                    data-title="FitTrade"
+                    data-url="https://fittrade-projectofrontend.netlify.app/"
+                  >
+                    Probalo acá
+                  </button>
+                  <a href="https://fittrade-projectofrontend.netlify.app/" target="_blank" rel="noopener">
+                    Ver sitio
+                  </a>
                   <a
-                    class="btn"
+                    href="https://github.com/Ivan-Jaureguiberry/Proyecto-FrontEnd"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Ver código
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 3: Inventario verdulería -->
+            <article class="project">
+              <figure class="shot">
+                <div class="terminal">
+                  <div class="browser-bar">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <span>Terminal · Python</span>
+                  </div>
+                  <pre><span class="t-title">******* VERDULERIA 'PYNTHO' *******</span>
+
+1. Registrar nuevos productos
+2. Actualizar los productos
+3. Eliminar un producto
+4. Mostrar los productos
+5. Buscar producto
+6. Generar reporte de bajo stock
+7. Compra de producto
+8. Salir del programa
+
+Ingrese una opcion: <span class="t-input">6</span>
+Ingrese el limite para el control de stock minimo: <span class="t-input">50</span>
+
+<span class="t-blue">Listado de productos con bajo stock</span>
+
+Nombre                         |Cantidad
+-----------------------------------------
+Manteca                        |50
+Mantecol                       |45</pre>
+                </div>
+                <figcaption class="note">salida real del programa</figcaption>
+              </figure>
+
+              <div class="project-info">
+                <p class="kind">Aplicación de consola · Python</p>
+                <h3>Inventario para una verdulería</h3>
+                <p>
+                  Un sistema para manejar el stock de un comercio desde la terminal. Permite cargar,
+                  editar, borrar y buscar productos, registrar ventas que descuentan stock y ver qué
+                  productos están por agotarse. Los datos se guardan en SQLite.
+                </p>
+                <p class="stack">Python · SQLite · Colorama</p>
+                <div class="links">
+                  <button class="btn primary btn-small" type="button" data-demo="inventario">
+                    Probalo acá
+                  </button>
+                  <a
                     href="https://github.com/Ivan-Jaureguiberry/Proyecto-Python-Tienda"
                     target="_blank"
                     rel="noopener"
                   >
-                    Código
+                    Ver código
                   </a>
                 </div>
-              </div>
-              <!-- Vista previa de la consola -->
-              <div class="mock">
-                <div class="mock-bar">
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                  <span>python main.py</span>
-                </div>
-                <pre class="term"><span class="c">===== VERDULERÍA · MENÚ =====</span>
- 1) Registrar producto
- 2) Actualizar producto
- 3) Eliminar producto
- 4) Mostrar productos
- 5) Buscar productos
- 6) Reporte de bajo stock
- 7) Venta de productos
-<span class="y">&gt; 6</span>
-<span class="d">Límite de stock:</span> <span class="y">10</span>
-<span class="r">⚠ Tomate redondo  · stock 4</span>
-<span class="r">⚠ Palta Hass      · stock 7</span>
-<span class="g">✔ Reporte generado (2 productos)</span></pre>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- ============ HABILIDADES Y FORMACIÓN ============ -->
-      <section class="block" id="habilidades">
-        <div class="wrap two">
-          <div>
-            <div class="sec-head"><h2>Habilidades</h2></div>
-            <div class="skill-group">
-              <h3>Front-End</h3>
-              <div class="skills">
-                <span class="skill core">HTML</span>
-                <span class="skill core">CSS</span>
-                <span class="skill core">JavaScript</span>
-                <span class="skill core">React</span>
-                <span class="skill">Diseño responsive</span>
+      <!-- ============ FORMACIÓN ============ -->
+      <section class="block" id="formacion">
+        <div class="wrap">
+          <h2>Formación</h2>
+
+          <ol class="timeline">
+            <li>
+              <span class="when">2022 – hoy</span>
+              <div>
+                <h3>Ingeniería Informática</h3>
+                <p>Universidad Nacional de La Matanza (UNLaM). Carrera en curso.</p>
               </div>
-            </div>
-            <div class="skill-group">
-              <h3>Herramientas</h3>
-              <div class="skills">
-                <span class="skill">Git</span>
-                <span class="skill">GitHub</span>
-                <span class="skill">APIs REST</span>
-                <span class="skill">Netlify</span>
+            </li>
+            <li>
+              <span class="when">Jul 2026</span>
+              <div>
+                <h3>Front-End JS</h3>
+                <p>Talento Tech, Agencia de Habilidades para el Futuro (CABA). 80 horas.</p>
               </div>
-            </div>
-            <div class="skill-group">
-              <h3>Lenguajes y datos</h3>
-              <div class="skills">
-                <span class="skill">SQL</span>
-                <span class="skill">SQLite</span>
-                <span class="skill">Python</span>
-                <span class="skill">C</span>
+            </li>
+            <li>
+              <span class="when">Dic 2024</span>
+              <div>
+                <h3>Iniciación a la Programación con Python</h3>
+                <p>Talento Tech, Agencia de Habilidades para el Futuro (CABA).</p>
               </div>
-            </div>
-          </div>
-          <div id="formacion">
-            <div class="sec-head"><h2>Formación</h2></div>
-            <ol class="timeline">
-              <li>
-                <span class="when">2022 — hoy</span>
-                <div>
-                  <h3>Ingeniería Informática</h3>
-                  <p>Universidad Nacional de La Matanza (UNLaM). Carrera en curso.</p>
-                </div>
-              </li>
-              <li>
-                <span class="when">Idiomas</span>
-                <div>
-                  <h3>Inglés intermedio</h3>
-                  <p>Lectura de documentación técnica y comunicación escrita.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -357,92 +335,123 @@
       <section class="block" id="contacto">
         <div class="wrap contact">
           <div>
-            <h2 class="big">¿Tenés un puesto o un proyecto? Hablemos.</h2>
-            <p>
-              Busco mi primera experiencia como desarrollador Front-End, en modalidad remota,
-              híbrida o presencial en GBA.
+            <h2>¿Hablamos?</h2>
+            <p class="contact-text">
+              Si tenés un puesto, una pasantía o un proyecto donde pueda sumar, escribime. Respondo
+              rápido.
             </p>
-            <div class="channels">
-              <div class="channel">
-                <div>
-                  <small>Email</small>
-                  <span class="val" id="email">ivanjaureguiberry4@gmail.com</span>
-                </div>
-                <button class="copy" type="button" id="copyEmail">Copiar</button>
-              </div>
-              <div class="channel">
-                <div>
-                  <small>LinkedIn</small>
-                  <a
-                    href="https://www.linkedin.com/in/ivan-jaureguiberry"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    in/ivan-jaureguiberry
-                  </a>
-                </div>
-              </div>
-              <div class="channel">
-                <div>
-                  <small>GitHub</small>
-                  <a href="https://github.com/Ivan-Jaureguiberry" target="_blank" rel="noopener">
-                    Ivan-Jaureguiberry
-                  </a>
-                </div>
-              </div>
+
+            <div class="email-row">
+              <span class="email" id="email">ivanjaureguiberry4@gmail.com</span>
+              <button class="copy" type="button" id="copyEmail">Copiar</button>
             </div>
+
+            <p class="socials">
+              También estoy en
+              <a href="https://www.linkedin.com/in/ivan-jaureguiberry" target="_blank" rel="noopener">LinkedIn</a>
+              y
+              <a href="https://github.com/Ivan-Jaureguiberry" target="_blank" rel="noopener">GitHub</a>.
+            </p>
           </div>
+
           <!-- Formulario de contacto -->
           <form id="form" novalidate>
             <label for="f-name">
-              Nombre
-              <input id="f-name" name="name" autocomplete="name" placeholder="Tu nombre" />
+              Tu nombre
+              <input id="f-name" name="name" autocomplete="name" />
               <span class="err" id="e-name"></span>
             </label>
+
             <label for="f-mail">
-              Email
-              <input
-                id="f-mail"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="nombre@empresa.com"
-              />
+              Tu email
+              <input id="f-mail" name="email" type="email" autocomplete="email" />
               <span class="err" id="e-mail"></span>
             </label>
+
             <label for="f-msg">
               Mensaje
-              <textarea
-                id="f-msg"
-                name="message"
-                placeholder="Contame sobre el puesto o el proyecto"
-              ></textarea>
+              <textarea id="f-msg" name="message"></textarea>
               <span class="err" id="e-msg"></span>
             </label>
-            <button class="btn primary btn-block" type="submit">Enviar mensaje</button>
-            <p class="form-note" id="formNote">
-              Se abre tu app de correo con el mensaje listo para enviar.
-            </p>
+
+            <button class="btn primary" type="submit">Enviar mensaje</button>
+            <p class="form-note" id="formNote">Se abre tu app de correo con el mensaje listo.</p>
           </form>
         </div>
       </section>
     </main>
 
+    <!-- ============ VERSIONES DE PRUEBA ============ -->
+
+    <!-- Páginas web: se abren dentro de la ventana -->
+    <dialog class="demo" id="demoWeb" aria-labelledby="demoWebTitle">
+      <div class="demo-head">
+        <h2 id="demoWebTitle">Proyecto</h2>
+        <div class="demo-actions">
+          <div class="device-switch" role="group" aria-label="Tamaño de pantalla">
+            <button type="button" data-device="desktop" aria-pressed="true">Compu</button>
+            <button type="button" data-device="mobile" aria-pressed="false">Celular</button>
+          </div>
+          <a class="demo-open" id="demoWebOpen" href="#" target="_blank" rel="noopener">
+            Abrir en pestaña nueva
+          </a>
+          <button class="icon-btn demo-close" type="button" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="demo-stage">
+        <iframe id="demoWebFrame" title="Versión de prueba del proyecto" loading="lazy"></iframe>
+      </div>
+    </dialog>
+
+    <!-- Programa de Python: terminal interactiva -->
+    <dialog class="demo demo-terminal" id="demoInventario" aria-labelledby="demoInvTitle">
+      <div class="demo-head">
+        <h2 id="demoInvTitle">Inventario para una verdulería</h2>
+        <div class="demo-actions">
+          <button class="demo-open" type="button" id="demoInvReset">Reiniciar</button>
+          <button class="icon-btn demo-close" type="button" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="demo-hint">
+        Escribí el número de una opción y apretá Enter. Es una versión del programa adaptada para el
+        navegador: los cambios no se guardan.
+      </p>
+      <div class="console">
+        <div class="console-output" id="consoleOutput" aria-live="polite"></div>
+        <form class="console-input" id="consoleForm" autocomplete="off">
+          <span aria-hidden="true">&gt;</span>
+          <label class="sr-only" for="consoleEntry">Respuesta al programa</label>
+          <input id="consoleEntry" type="text" spellcheck="false" />
+          <button type="submit">Enter</button>
+        </form>
+      </div>
+    </dialog>
+
     <!-- ============ FOOTER ============ -->
     <footer>
-      <div class="wrap">
+      <div class="wrap footer-inner">
         <span>
           ©
           <span id="year">2026</span>
           Iván Jaureguiberry
         </span>
-        <span class="mono">Hecho con HTML, CSS y JavaScript</span>
+        <span>Hecho a mano con HTML, CSS y JavaScript</span>
       </div>
     </footer>
+
     <!-- Aviso flotante (lo usa main.js) -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <!-- Scripts -->
-    <script src="js/main.js?v=3"></script>
+    <script src="js/demo-inventario.js?v=5"></script>
+    <script src="js/main.js?v=5"></script>
   </body>
 </html>
