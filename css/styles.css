@@ -20,9 +20,9 @@
 
 /* ==========================================================================
    1. Variables (colores, tipografías, medidas)
-   Layout: una sola columna que se lee de arriba hacia abajo en todas las
-   pantallas. En 1920×1080 el contenedor llega a 1120px y el texto se agranda;
-   en notebook, tablet y celular solo se achica.
+   Layout: una sola columna centrada que se lee de arriba hacia abajo. En
+   1920×1080 el hero ocupa la primera pantalla y el contenido llega a 1120px;
+   en notebook, tablet y celular se achica manteniendo el mismo orden.
    ========================================================================== */
 
 :root {
@@ -283,23 +283,42 @@ img {
 
 /* ==========================================================================
    6. Hero
+   En pantallas de escritorio ocupa la primera pantalla completa y todo
+   queda centrado vertical y horizontalmente.
    ========================================================================== */
 
 .hero {
-  padding-block: clamp(48px, 9vw, 120px) clamp(48px, 7vw, 96px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(56px, 9vw, 96px);
+  text-align: center;
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+  .hero {
+    min-height: calc(100svh - var(--header-h));
+    padding-block: 48px 72px;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hello {
   font-family: var(--font-hand);
-  font-size: clamp(1.6rem, 3.5vw, 2rem);
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 2.4rem);
   color: var(--accent);
   transform: rotate(-2deg);
-  transform-origin: left;
 }
 
 .hero-name {
-  margin-top: 4px;
-  font-size: clamp(2.7rem, 9vw, 7rem);
+  margin-top: 8px;
+  font-size: clamp(2.7rem, 1rem + 6.5vw, 7rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.98;
@@ -316,8 +335,8 @@ img {
   width: fit-content;
   align-items: center;
   gap: 8px;
-  margin-top: 28px;
-  padding: 6px 14px;
+  margin-top: clamp(28px, 3vw, 44px);
+  padding: 7px 16px;
   border-radius: 999px;
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -334,7 +353,8 @@ img {
 }
 
 .lead {
-  max-width: 58ch;
+  max-width: 54ch;
+  text-wrap: pretty;
   margin-top: 28px;
   color: var(--muted);
   font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.45rem);
@@ -343,20 +363,15 @@ img {
 .cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 32px;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
 }
 
 .where {
   margin-top: 28px;
   color: var(--muted);
   font-size: 0.93rem;
-}
-
-@media (min-width: 821px) {
-  .status {
-    margin-top: 40px;
-  }
 }
 
 @media (max-width: 420px) {
@@ -374,7 +389,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 20px;
+  padding: 11px 22px;
   border: 1.5px solid var(--ink);
   border-radius: 999px;
   background: transparent;
@@ -391,12 +406,8 @@ img {
   background: var(--accent-soft);
 }
 
-.btn.primary:hover {
-  background: color-mix(in srgb, var(--accent) 85%, var(--ink));
-}
-
 .btn-small {
-  padding: 8px 16px;
+  padding: 8px 18px;
   font-size: 0.93rem;
 }
 
@@ -406,12 +417,25 @@ img {
   color: var(--bg);
 }
 
+.btn.primary:hover {
+  background: color-mix(in srgb, var(--accent) 85%, var(--ink));
+}
+
 /* ==========================================================================
    8. Secciones
+   Todas las secciones tienen el título y su contenido centrados.
    ========================================================================== */
 
 .block {
-  padding-block: clamp(56px, 8vw, 96px);
+  padding-block: clamp(64px, 8vw, 120px);
+  border-top: 1px solid var(--line);
+}
+
+.block > .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .block h2 {
@@ -421,7 +445,7 @@ img {
 }
 
 .section-intro {
-  margin-top: 10px;
+  margin-top: 12px;
   color: var(--muted);
 }
 
@@ -430,23 +454,19 @@ img {
    ========================================================================== */
 
 .about {
-  display: grid;
-  gap: 28px;
-}
-
-.about > * {
-  min-width: 0;
+  gap: 32px;
 }
 
 .about-text {
+  text-wrap: pretty;
   display: grid;
   gap: 16px;
+  max-width: 62ch;
 }
 
 .skills {
-  justify-self: start;
-  width: min(100%, 560px);
-  padding: 22px 24px;
+  width: min(100%, 620px);
+  padding: 24px 28px;
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -454,7 +474,7 @@ img {
 
 .skills h3 {
   font-family: var(--font-hand);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--accent);
 }
@@ -468,34 +488,33 @@ img {
   font-size: 0.98rem;
 }
 
-.about-text {
-  max-width: 68ch;
-}
-
 /* ==========================================================================
    10. Proyectos
    ========================================================================== */
 
 .projects {
   display: grid;
-  gap: clamp(56px, 9vw, 96px);
-  margin-top: 48px;
+  justify-items: center;
+  gap: clamp(72px, 9vw, 128px);
+  width: 100%;
+  margin-top: clamp(40px, 5vw, 64px);
 }
 
 .project {
   display: grid;
-  gap: 28px;
-}
-
-.project-info {
-  max-width: 68ch;
+  justify-items: center;
+  gap: 32px;
+  width: 100%;
 }
 
 .project > * {
   min-width: 0;
 }
 
+/* Las capturas se muestran como máximo a su tamaño real (960px) para que
+   se vean nítidas */
 .shot {
+  width: min(100%, 960px);
   margin: 0;
 }
 
@@ -507,17 +526,21 @@ img {
   box-shadow: var(--shadow);
 }
 
+.browser img {
+  width: 100%;
+}
+
 .browser-bar {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 12px;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--line);
 }
 
 .browser-bar i {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--line);
 }
@@ -526,7 +549,7 @@ img {
   margin-left: 8px;
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -534,6 +557,7 @@ img {
 /* La terminal mantiene sus colores en los dos temas, como una consola real */
 .terminal {
   background: #0c0c0c;
+  text-align: left;
 }
 
 .terminal .browser-bar {
@@ -550,13 +574,13 @@ img {
 
 .terminal pre {
   margin: 0;
-  padding: 14px 16px 18px;
+  padding: 18px 22px 22px;
   overflow-x: auto;
   color: #f2f2f2;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: clamp(0.72rem, 0.55rem + 0.35vw, 0.95rem);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .t-title {
@@ -572,8 +596,13 @@ img {
 }
 
 .shot .note {
-  margin-top: 14px;
+  margin-top: 16px;
   text-align: center;
+}
+
+.project-info {
+  max-width: 62ch;
+  text-wrap: pretty;
 }
 
 .kind {
@@ -586,7 +615,7 @@ img {
 
 .project h3 {
   margin-top: 6px;
-  font-size: clamp(1.6rem, 3.2vw, 2rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.4rem);
   font-weight: 700;
 }
 
@@ -604,9 +633,10 @@ img {
 .links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 12px 18px;
-  margin-top: 20px;
+  gap: 12px 20px;
+  margin-top: 22px;
 }
 
 .links a {
@@ -621,39 +651,31 @@ img {
 
 /* ==========================================================================
    11. Formación
+   Cada estudio es una tarjeta centrada, una debajo de la otra.
    ========================================================================== */
 
 .timeline {
   display: grid;
-  gap: 26px;
-  margin: 36px 0 0;
-  padding: 0 0 0 22px;
+  gap: 16px;
+  width: min(100%, 620px);
+  margin: 40px 0 0;
+  padding: 0;
   list-style: none;
-  border-left: 2px dashed var(--line);
 }
 
-/* Cada estudio: la fecha arriba y el título debajo */
 .timeline li {
-  position: relative;
   display: grid;
-  gap: 2px;
-}
-
-.timeline li::before {
-  content: '';
-  position: absolute;
-  left: -29px;
-  top: 7px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--accent);
+  gap: 4px;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .when {
-  color: var(--muted);
-  font-size: 0.93rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -663,7 +685,6 @@ img {
 }
 
 .timeline p {
-  margin-top: 4px;
   color: var(--muted);
   font-size: 0.98rem;
 }
@@ -673,8 +694,7 @@ img {
    ========================================================================== */
 
 .contact {
-  display: grid;
-  gap: 36px;
+  gap: 40px;
 }
 
 .contact > * {
@@ -682,21 +702,22 @@ img {
 }
 
 .contact-text {
-  max-width: 42ch;
-  margin-top: 14px;
+  max-width: 46ch;
+  margin: 14px auto 0;
   color: var(--muted);
 }
 
 .email-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   margin-top: 24px;
 }
 
 .email {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   overflow-wrap: anywhere;
   user-select: all;
@@ -723,14 +744,17 @@ img {
   color: var(--muted);
 }
 
+/* El formulario queda centrado; adentro, las etiquetas van alineadas a la
+   izquierda para que se lea mejor */
 .contact form {
-  width: min(100%, 640px);
   display: grid;
   gap: 14px;
-  padding: clamp(20px, 3vw, 28px);
+  width: min(100%, 620px);
+  padding: clamp(20px, 3vw, 32px);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
+  text-align: left;
 }
 
 .contact label {
@@ -771,6 +795,7 @@ textarea {
 }
 
 .form-note {
+  text-align: center;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -791,11 +816,12 @@ footer {
 
 .footer-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
+  text-align: center;
 }
 
 .toast {
