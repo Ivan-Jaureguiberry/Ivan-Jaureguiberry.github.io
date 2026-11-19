@@ -18,7 +18,7 @@
     />
 
     <!-- Estilos (cambiá el ?v= en cada actualización para que el navegador no use una copia vieja) -->
-    <link rel="stylesheet" href="css/styles.css?v=5" />
+    <link rel="stylesheet" href="css/styles.css?v=6" />
   </head>
 
   <body>
@@ -38,8 +38,19 @@
             <a href="#contacto">Contacto</a>
           </nav>
 
-          <button class="icon-btn" id="themeBtn" type="button" aria-label="Cambiar tema claro/oscuro">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <button
+            class="icon-btn"
+            id="themeBtn"
+            type="button"
+            aria-label="Cambiar tema claro/oscuro"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
             </svg>
           </button>
@@ -52,7 +63,13 @@
             aria-expanded="false"
             aria-controls="nav"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
@@ -63,35 +80,60 @@
     <main id="inicio">
       <!-- ============ HERO ============ -->
       <section class="hero wrap">
-        <p class="hello">Hola, soy</p>
+        <div class="hero-text">
+          <p class="hello">Hola, soy</p>
 
-        <h1 class="hero-name">
-          Iván
-          <span class="surname">Jaureguiberry</span>
-        </h1>
+          <h1 class="hero-name">
+            Iván
+            <span class="surname">Jaureguiberry</span>
+          </h1>
 
-        <span class="status">
-          <span class="dot" aria-hidden="true"></span>
-          Disponible para mi primer rol como Front-End
-        </span>
+          <span class="status">
+            <span class="dot" aria-hidden="true"></span>
+            Disponible para mi primer rol como Front-End
+          </span>
 
-        <p class="lead">
-          Estudio Ingeniería Informática en la UNLaM y me dedico a lo que más me gusta: armar páginas
-          web que se vean bien y se usen fácil, tanto en la compu como en el
-          celular.
-        </p>
+          <p class="lead">
+            Estudio Ingeniería Informática en la UNLaM y me dedico a lo que más me gusta: armar
+            páginas web que se vean bien y se usen fácil, tanto en la compu como en el celular.
+          </p>
 
-        <div class="cta">
-          <a class="btn primary" href="#proyectos">Ver mis proyectos</a>
-          <a class="btn" href="https://github.com/Ivan-Jaureguiberry" target="_blank" rel="noopener">
-            GitHub
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/ivan-jaureguiberry" target="_blank" rel="noopener">
-            LinkedIn
-          </a>
+          <div class="cta">
+            <a class="btn primary" href="#proyectos">Ver mis proyectos</a>
+            <a
+              class="btn"
+              href="https://github.com/Ivan-Jaureguiberry"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+            </a>
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/ivan-jaureguiberry"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn
+            </a>
+          </div>
+
+          <p class="where">El Palomar, Buenos Aires · Inglés intermedio</p>
         </div>
 
-        <p class="where">El Palomar, Buenos Aires · Inglés intermedio</p>
+        <!-- Vista previa del último proyecto (solo en pantallas grandes) -->
+        <a class="hero-preview" href="#proyectos" aria-label="Ir a mis proyectos">
+          <span class="browser">
+            <span class="browser-bar">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span>Lomas Sweet · React</span>
+            </span>
+            <img src="img/lomas-sweet.webp" width="960" height="567" alt="" />
+          </span>
+          <span class="note">lo último que hice ↓</span>
+        </a>
       </section>
 
       <!-- ============ SOBRE MÍ ============ -->
@@ -106,9 +148,9 @@
               Desde ahí me fui por el lado del Front-End.
             </p>
             <p>
-              Me gusta cuidar los detalles: que los botones respondan, que el texto se lea bien y que
-              la página no se rompa en una pantalla chica. Hoy trabajo con HTML, CSS, JavaScript y
-              React, y uso Git y GitHub en todos mis proyectos.
+              Me gusta cuidar los detalles: que los botones respondan, que el texto se lea bien y
+              que la página no se rompa en una pantalla chica. Hoy trabajo con HTML, CSS, JavaScript
+              y React, y uso Git y GitHub en todos mis proyectos.
             </p>
             <p>
               Estoy buscando mi primera experiencia en un equipo donde pueda aprender, aportar y
@@ -119,9 +161,18 @@
           <aside class="skills" aria-label="Herramientas que uso">
             <h3>Lo que uso</h3>
             <ul>
-              <li><strong>Front-End:</strong> HTML, CSS, JavaScript, React</li>
-              <li><strong>Herramientas:</strong> Git, GitHub, APIs REST, Netlify</li>
-              <li><strong>También:</strong> SQL, SQLite, Python, C</li>
+              <li>
+                <strong>Front-End:</strong>
+                HTML, CSS, JavaScript, React
+              </li>
+              <li>
+                <strong>Herramientas:</strong>
+                Git, GitHub, APIs REST, Netlify
+              </li>
+              <li>
+                <strong>También:</strong>
+                SQL, SQLite, Python, C
+              </li>
             </ul>
           </aside>
         </div>
@@ -161,10 +212,12 @@
                 <p>
                   Tienda online de alfajores artesanales de Lomas de Zamora. Tiene catálogo con
                   búsqueda y paginación, detalle de cada producto, favoritos y carrito. Los usuarios
-                  pueden registrarse e iniciar sesión, y hay un panel de administración protegido para
-                  cargar, editar y borrar productos.
+                  pueden registrarse e iniciar sesión, y hay un panel de administración protegido
+                  para cargar, editar y borrar productos.
                 </p>
-                <p class="stack">React · Vite · React Router · Firebase (Auth y Firestore) · CSS Modules</p>
+                <p class="stack">
+                  React · Vite · React Router · Firebase (Auth y Firestore) · CSS Modules
+                </p>
                 <div class="links">
                   <button
                     class="btn primary btn-small"
@@ -175,10 +228,18 @@
                   >
                     Probalo acá
                   </button>
-                  <a href="https://ivan-jaureguiberry.github.io/Proyecto-React-LomasSweet/" target="_blank" rel="noopener">
+                  <a
+                    href="https://ivan-jaureguiberry.github.io/Proyecto-React-LomasSweet/"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     Ver sitio
                   </a>
-                  <a href="https://github.com/Ivan-Jaureguiberry/Proyecto-React-LomasSweet" target="_blank" rel="noopener">
+                  <a
+                    href="https://github.com/Ivan-Jaureguiberry/Proyecto-React-LomasSweet"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     Ver código
                   </a>
                 </div>
@@ -225,7 +286,11 @@
                   >
                     Probalo acá
                   </button>
-                  <a href="https://fittrade-projectofrontend.netlify.app/" target="_blank" rel="noopener">
+                  <a
+                    href="https://fittrade-projectofrontend.netlify.app/"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     Ver sitio
                   </a>
                   <a
@@ -348,7 +413,13 @@ Mantecol                       |45</pre>
 
             <p class="socials">
               También estoy en
-              <a href="https://www.linkedin.com/in/ivan-jaureguiberry" target="_blank" rel="noopener">LinkedIn</a>
+              <a
+                href="https://www.linkedin.com/in/ivan-jaureguiberry"
+                target="_blank"
+                rel="noopener"
+              >
+                LinkedIn
+              </a>
               y
               <a href="https://github.com/Ivan-Jaureguiberry" target="_blank" rel="noopener">GitHub</a>.
             </p>
@@ -396,7 +467,13 @@ Mantecol                       |45</pre>
             Abrir en pestaña nueva
           </a>
           <button class="icon-btn demo-close" type="button" aria-label="Cerrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
@@ -414,7 +491,13 @@ Mantecol                       |45</pre>
         <div class="demo-actions">
           <button class="demo-open" type="button" id="demoInvReset">Reiniciar</button>
           <button class="icon-btn demo-close" type="button" aria-label="Cerrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
